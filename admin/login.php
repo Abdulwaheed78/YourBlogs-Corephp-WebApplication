@@ -1,4 +1,4 @@
-<?php include("../conn.php");
+<?php include("conn.php");
 session_start();
 if(isset($_SESSION['userLoggedIn']) && $_SESSION['userLoggedIn']){
   header("location:index.php");
@@ -6,7 +6,7 @@ if(isset($_SESSION['userLoggedIn']) && $_SESSION['userLoggedIn']){
 if(isset($_POST['login'])){
 $username=$_POST['username'];
 $password=$_POST['password'];
-$sql=mysqli_query($con,"SELECT * FROM admin WHERE username='$username' AND password='$password' ");
+$sql=mysqli_query($con,"SELECT * FROM users WHERE username='$username' AND password_hash='$password' ");
 if(mysqli_num_rows($sql)){
   $_SESSION['userLoggedIn']=true;
   $_SESSION['username']=$username;
@@ -82,7 +82,7 @@ if(mysqli_num_rows($sql)){
 
                   <div class="pt-4 pb-2">
                     <h5 class="card-title text-center pb-0 fs-4">Login to Admin</h5>
-                    <p class="text-center small">Enter your username & password to login</p>
+                    <p class="text-center small">Enter login Credentials</p>
                   </div>
 
                   <form  method="post"  class="row g-3 needs-validation" novalidate >

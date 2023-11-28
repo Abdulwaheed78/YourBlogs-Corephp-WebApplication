@@ -34,7 +34,7 @@ function getsubmenuno($con,$menu_id){
 }
 
 function getadmin($con, $username){
-   $sql=mysqli_query($con,"SELECT * FROM admin WHERE username='$username'");
+   $sql=mysqli_query($con,"SELECT * FROM users WHERE username='$username'");
    $res=mysqli_fetch_assoc($sql);
    return $res;
 
