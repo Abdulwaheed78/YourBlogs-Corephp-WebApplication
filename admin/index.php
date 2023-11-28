@@ -362,6 +362,7 @@
               <th scope="col">Comment</th>
               <th scope="col">Post</th>
               <th scope="col">Email</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -376,6 +377,7 @@
                 <td><?php echo $run['comment']; ?></td>
                 <td><?php echo $run['title']; ?></td>
                 <td><?php echo $run['email']; ?></td>
+                <td><a href="deletecomment.php?delete=<?php echo $run['id'];?>" class="btn btn-outline-danger">Delete</a></td>
               </tr>
             <?php } ?>
           </tbody>

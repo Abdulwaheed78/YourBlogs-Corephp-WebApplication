@@ -1,4 +1,4 @@
-# YourBlogs-Corephp-WebSite Responsive
+# YourBlogs-Corephp-WebApplication
 YourBlog is a web application created for posting and reading blogs. the technologies are used to make yourblog web appication are given below:  For Frontend i used   Html, Css For Customization, Javascript and Css Framework Boostrap.  For Backend and scripting language I used  core php. I used mysql For database
 Features of YourBlog Application:
  1.  I created admin panel to login and post Blogs, from admin panel you can add new blogs, add images in blogs,you have administration 
@@ -19,7 +19,7 @@ step 4: import database file in your data base from loaclhost/phpmyadmin
 i give my database file in data this repository
 
 note:
-     for admin panel   username:  @abdul12   and password: 000000
+     for admin panel   username:  abdul   and password: waheed12
 
 After  doin all of this steps open chrome browser and type   localhost/blog   u will see that project is runnig   to goto admin panel just write localhost/blog/admin 
 login page will come out fill administrator detals and jump to admin panel.

@@ -1,64 +1,59 @@
-<?php
-include "admin/conn.php";
-include "functions.php";
-include "includes/nav3.php";
-?>
+<?php include "default.php"; ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<style>
+  .banner {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-  <title>HOME</title>
-  <style>
-    .banner {
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-    }
+  .abdul {
+    margin-top: 80px;
+  }
 
-    .abdul {
-      margin-top: 80px;
-    }
+  .card-title {
+    padding-top: 30px;
+    font-size: 20px;
+  }
 
+  .card-text {
+    font-size: 16px;
+  }
+
+  /* Media query for small screens (mobile) */
+  @media screen and (max-width: 767px) {
     .card-title {
-      padding-top: 30px;
-      font-size: 20px;
+      font-size: 16px;
+      /* Adjust font size for mobile screens */
     }
 
     .card-text {
+      font-size: 14px;
+      /* Adjust font size for mobile screens */
+    }
+
+    .abdul {
+      margin-top: 60px;
+    }
+  }
+
+  /* Media query for medium-sized screens (tablets) */
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .card-title {
       font-size: 16px;
+      /* Adjust font size for tablets */
     }
 
-    /* Media query for small screens (mobile) */
-    @media screen and (max-width: 767px) {
-      .card-title {
-        font-size: 16px;
-        /* Adjust font size for mobile screens */
-      }
-
-      .card-text {
-        font-size: 14px;
-        /* Adjust font size for mobile screens */
-      }
+    .card-text {
+      font-size: 14px;
+      /* Adjust font size for tablets */
     }
 
-    /* Media query for medium-sized screens (tablets) */
-    @media screen and (min-width: 768px) and (max-width: 1024px) {
-      .card-title {
-        font-size: 16px;
-        /* Adjust font size for tablets */
-      }
-
-      .card-text {
-        font-size: 14px;
-        /* Adjust font size for tablets */
-      }
+    .abdul {
+      margin-top: 60px;
     }
-  </style>
+  }
+</style>
 </head>
 
 <body class="abdul" style="background-color:#F6F9FF;">
@@ -96,61 +91,3 @@ include "includes/nav3.php";
   <div class="mt-5 text-danger">
     <?php include "includes/footer.php"; ?>
   </div>
-  <style>
-        #back-to-top-btn {
-            display: none;
-            position: fixed;
-            bottom: 20px;
-            right: 30px;
-            z-index: 99;
-            font-size: 16px;
-            border: none;
-            outline: none;
-            background-color: #333;
-            color: #fff;
-            cursor: pointer;
-            padding: 15px;
-            border-radius: 10px;
-        }
-
-        #back-to-top-btn:hover {
-            background-color: #555;
-        }
-    </style>
-    <button id="back-to-top-btn">Back to Top</button>
-    <script>
-        var backToTopBtn = document.getElementById("back-to-top-btn");
-        var navbar = document.querySelector(".navbar");
-        var prevScrollpos = window.pageYOffset;
-
-        window.onscroll = function() {
-            var currentScrollPos = window.pageYOffset;
-
-            // Scroll behavior for Back-to-Top button
-            if (
-                document.body.scrollTop > 300 ||
-                document.documentElement.scrollTop > 200
-            ) {
-                backToTopBtn.style.display = "block";
-            } else {
-                backToTopBtn.style.display = "none";
-            }
-
-            // Scroll behavior for navbar
-            if (prevScrollpos > currentScrollPos) {
-                navbar.classList.remove("hide");
-            } else {
-                navbar.classList.add("hide");
-            }
-            prevScrollpos = currentScrollPos;
-        };
-
-        backToTopBtn.addEventListener("click", function() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-        });
-    </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-</body>
-
-</html>
