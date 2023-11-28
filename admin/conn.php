@@ -1,6 +1,6 @@
 <?php  
 
-$con=mysqli_connect("localhost","root","","blig");
+$con=mysqli_connect("localhost","root","","blog");
 if(!$con){
     echo"not connected";
 }
