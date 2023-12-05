@@ -1,4 +1,4 @@
-<?php include"../includes/adminside.php";?>
+<?php include "../includes/adminside.php"; ?>
 <main id="main" class="main">
   <section class="section dashboard">
     <div class="row">
@@ -8,7 +8,35 @@
 </pre>
         <div class="container mb-3">
           <a href="index.php?" class="btn btn-outline-primary"> Add New Post</a>
-          <a href="importpost.php" class="btn btn-outline-primary"> Import Post</a>
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Import Post
+          </button>
+        </div>
+        <!-- Button trigger modal -->
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Import Your File</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form action="importpost.php" method="POST" enctype="multipart/form-data">
+                <div class="modal-body">
+
+                <input type="file" name="csv_file" accept=".csv" required>
+    
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" name="import" class="btn btn-primary">Import</button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
         <div class="table-responsive">
           <div class="container d-flex justify-content-end">
@@ -377,7 +405,7 @@
                 <td><?php echo $run['comment']; ?></td>
                 <td><?php echo $run['title']; ?></td>
                 <td><?php echo $run['email']; ?></td>
-                <td><a href="deletecomment.php?delete=<?php echo $run['id'];?>" class="btn btn-outline-danger">Delete</a></td>
+                <td><a href="deletecomment.php?delete=<?php echo $run['id']; ?>" class="btn btn-outline-danger">Delete</a></td>
               </tr>
             <?php } ?>
           </tbody>
