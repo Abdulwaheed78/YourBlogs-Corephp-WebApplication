@@ -126,7 +126,7 @@ if (!isset($_SESSION['userLoggedIn'])) {
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
                 <li>
-                    <a href="#" onclick="openLink('blogger.test/'); return false;">
+                    <a href="#" onclick="openLink('yourblogs-corephp-webapplication.test/'); return false;">
                         <i class="bi bi-grid"></i> Visit site
                     </a>
                 </li>
