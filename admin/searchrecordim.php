@@ -50,11 +50,13 @@ $r = mysqli_query($con, "$sql LIMIT $offset, $recordsPerPage");
         <h2 class="mt-5 mb-5">Manage Image / Add Image</h2>
         <div class="col-12">
             <div class="table-responsive">
-                <div class="container-fluid">
-                    <?php echo "Total records: " . $totalRecords; ?>
-                    <form action="searchrecordim.php" method="GET" class="d-flex mt-2">
+                <div class="d-flex justify-content-between align-items-center mt-5 mb-3">
+                    <div class="text-danger">
+                        <?php echo "Total records: " . $totalRecords; ?>
+                    </div>
+                    <form action="searchrecordim.php" method="GET" class="d-flex">
                         <label for="search" class="visually-hidden">Search</label>
-                        <input class="form-control me-2" placeholder="Search" aria-label="Search" name="searchpost" id="search" value="<?php echo isset($searchQuery) ? htmlspecialchars($searchQuery) : ''; ?>">
+                        <input class="form-control me-2" placeholder="Search" aria-label="Search" name="searchpost" id="search" style="width: 70%;">
                         <button class="btn btn-outline-success">Search</button>
                     </form>
                 </div>
@@ -65,7 +67,7 @@ $r = mysqli_query($con, "$sql LIMIT $offset, $recordsPerPage");
                 ?>
                     <table class="table">
                         <thead>
-                            <tr>
+                            <tr class="bg-dark text-white">
                                 <th>Sr</th>
                                 <th scope="col">Images</th>
                                 <th scope="col">Post Name</th>

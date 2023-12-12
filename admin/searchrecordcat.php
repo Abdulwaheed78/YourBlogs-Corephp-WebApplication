@@ -5,9 +5,9 @@ include "../includes/adminside.php";
 
 <div class="main mt-5">
     <div class="row mt-5" style="padding-left: 320px; padding-right: 20px; ">
-       
+
         <div class="container mt-5 mb-3">
-        <h2>Search Category</h2>
+            <h2>Search Category</h2>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Add category
@@ -63,25 +63,19 @@ include "../includes/adminside.php";
             $r = mysqli_query($con, "SELECT * FROM category $searchCondition ORDER BY id DESC LIMIT $offset, $recordsPerPage");
             ?>
             <div class="table-responsive">
+                <div class="d-flex justify-content-between align-items-center mt-5 mb-3">
+                    <div class="text-danger">
+                        <?php echo "Total records: " . $totalRecords; ?>
+                    </div>
+                    <form action="searchrecordcat.php" method="GET" class="d-flex">
+                        <label for="search" class="visually-hidden">Search</label>
+                        <input class="form-control me-2" placeholder="Search" aria-label="Search" name="searchpost" id="search" style="width: 70%;">
+                        <button class="btn btn-outline-success">Search</button>
+                    </form>
+                </div>
                 <div class="container-fluid">
 
                     <?php
-                    echo "Total records: " . $totalRecords;
-                    if ($searchQuery) {
-                        // Show the search keyword in the input
-                        echo '<form action="searchrecordcat.php" method="GET" class="d-flex mt-2">';
-                        echo '<label for="search" class="visually-hidden">Search</label>';
-                        echo '<input class="form-control me-2" placeholder="Search" aria-label="Search" name="searchpost" id="search" value="' . htmlspecialchars($searchQuery) . '">';
-                        echo '<button class="btn btn-outline-success">Search</button>';
-                        echo '</form>';
-                    } else {
-                        echo '<form action="searchrecordcat.php" method="GET" class="d-flex mt-2">';
-                        echo '<label for="search" class="visually-hidden">Search</label>';
-                        echo '<input class="form-control me-2" placeholder="Search" aria-label="Search" name="searchpost" id="search">';
-                        echo '<button class="btn btn-outline-success">Search</button>';
-                        echo '</form>';
-                    }
-
                     if ($totalRecords > 0) {
                     } else {
                         echo '<div class="container mt-5 text-center mb-5"><h3>No matching records found.</h3></div>';
@@ -94,7 +88,7 @@ include "../includes/adminside.php";
                 ?>
                     <table class="table">
                         <thead>
-                            <tr>
+                            <tr class="bg-dark text-white">
                                 <th scope="col">Sr</th>
                                 <th scope="col">Category Name</th>
                                 <th scope="col">Action</th>

@@ -65,22 +65,15 @@ if (isset($_GET['searchpost'])) {
         <!-- import Button modal -->
         <!-- ... (unchanged modal code) ... -->
         <div class="table-responsive">
-            <div class="container d-flex justify-content-end">
-                <button class="btn btn-outline-primary me-3" onclick="exportTableToCSV('postTable.csv')">
-                    <i class="bi bi-file-earmark-text"></i> CSV
-                </button>
-                <button class="btn btn-outline-danger" onclick="exportTableToExcel('postTable.xlsx')">
-                    <i class="bi bi-file-earmark-excel"></i> Excel
-                </button>
-            </div>
-            <div class="container-fluid">
-                <?php echo "Total records: " . $totalRecords; ?>
-                <form action="searchrecord.php" method="GET" class="d-flex mt-2">
+            <div class="d-flex justify-content-between align-items-center mt-5 mb-3">
+                <div class="text-danger">
+                    <?php echo "Total records: " . $totalRecords; ?>
+                </div>
+                <form action="searchrecord.php" method="GET" class="d-flex">
                     <label for="search" class="visually-hidden">Search</label>
-                    <input class="form-control me-2" placeholder="Search" aria-label="Search" name="searchpost" id="search" value="<?php echo isset($searchQuery) ? htmlspecialchars($searchQuery) : ''; ?>">
+                    <input class="form-control me-2" placeholder="Search" aria-label="Search" name="searchpost" id="search" style="width: 70%;">
                     <button class="btn btn-outline-success">Search</button>
                 </form>
-
             </div>
 
             <?php
@@ -89,7 +82,7 @@ if (isset($_GET['searchpost'])) {
             ?>
                 <table id="postTable" class="table">
                     <thead>
-                        <tr>
+                        <tr class="bg-dark text-white">
                             <th scope="col">Sr</th>
                             <th scope="col">Title</th>
                             <th scope="col">Image</th>

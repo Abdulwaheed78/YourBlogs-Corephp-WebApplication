@@ -1,6 +1,17 @@
 <?php
 include("conn.php");
 
+function generateUniqueFileName($originalName, $maxFilenameLength = 255) {
+    $timestamp = time();
+    $randomString = bin2hex(random_bytes(5)); // Generate a random string (10 characters)
+    $uniqueName = $timestamp . '_' . $randomString . '_' . strtolower($originalName);
+
+    // Truncate the filename if it exceeds the maximum allowed length
+    $uniqueName = substr($uniqueName, 0, $maxFilenameLength);
+
+    return $uniqueName;
+}
+
 if(isset($_POST['post'])){
     $title = $_POST['title'];
     $content = $_POST['content'];
@@ -10,6 +21,10 @@ if(isset($_POST['post'])){
     if(isset($_FILES['featured_image']['name'])) {
         $featuredImageName = $_FILES['featured_image']['name'];
         $featuredImageTmpName = $_FILES['featured_image']['tmp_name'];
+
+        // Generate a unique filename
+        $featuredImageName = generateUniqueFileName($featuredImageName);
+
         $featuredImageFolder = "../images/" . $featuredImageName;
         move_uploaded_file($featuredImageTmpName, $featuredImageFolder);
 
@@ -24,6 +39,10 @@ if(isset($_POST['post'])){
             for ($i = 0; $i < count($_FILES['image']['name']); $i++) {
                 $image_name = $_FILES['image']['name'][$i];
                 $tmpname = $_FILES['image']['tmp_name'][$i];
+
+                // Generate a unique filename
+                $image_name = generateUniqueFileName($image_name);
+
                 $folder = "../images/" . $image_name;
                 move_uploaded_file($tmpname, $folder);
 
