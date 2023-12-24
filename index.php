@@ -131,6 +131,7 @@
         $email = $_POST['email'];
         $comment = $_POST['comment'];
         $sql = mysqli_query($con, "INSERT INTO comments (email,name,comment,post_id) VALUES('$email' ,'$name', '$comment',$post_id)");
+        unset($_POST);
       } ?>
       <div class="card-text" style="overflow :hidden;">
         <p><?php echo $data['content'];  ?></p>
@@ -257,25 +258,50 @@
     </nav>
   </div>
 
-  <div class="container  mt-5">
-    <h5 class="text-start">Latest Comments</h5>
-    <table class="table table-borderless" style="border: none;">
+
+
+
+
+  <div class="card mt-5">
+    <h5 class="card-header bg-dark text-white text-center mb-0">User Comments</h5>
+    <div class="card-body mt-0" style="max-height: 300px; overflow-y: auto;">
       <?php
-      $post_id = $data['id'];
-      $id = $post_id;
-      $query = mysqli_query($con, "SELECT * FROM comments WHERE post_id=$id ORDER BY id DESC");
+      // Assuming $data['id'] contains the post ID, replace it with the actual array key or variable you have for the post ID.
+      $post_id = isset($data['id']) ? $data['id'] : 0;
+
+      $query = mysqli_query($con, "SELECT * FROM comments WHERE post_id=$post_id ORDER BY id DESC");
+      if (!$query) {
+        echo 'Error: ' . mysqli_error($con);
+      }
+
       while ($cs = mysqli_fetch_assoc($query)) {
       ?>
-        <div class="card-body border-bottom">
-          <div class="d-flex justify-content-between">
-            <h5 class="card-title"><?php echo $cs['name']; ?></h5>
-            <small style="color: #aaa;"><?php echo date('F j, Y', strtotime($cs['created_at'])); ?></small>
+        <div class="body border-bottom mb-3 p-3 shadow">
+          <div class="d-flex align-items-start gap-3">
+            <!-- Circular user image -->
+            <div class="rounded-circle user-image" style="width: 50px; height: 50px; overflow: hidden; background-color: #ddd;">
+              <!-- You can use an actual user image if you have one -->
+              <img src="https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg" alt="User Image" class="w-100 h-100">
+            </div>
+
+            <div class="ml-3">
+              <div class=" justify-content-between align-items-center">
+                <div>
+                  <h5 class="card-title mb-0"><?php echo $cs['name']; ?> </h5>
+                </div>
+                <div class="ms-auto">
+                  <small class="text-danger"><?php echo date('M j, Y', strtotime($cs['created_at'])); ?></small>
+                </div>
+              </div>
+              <p class="card-text" style="color: #555;"><?php echo $cs['comment']; ?></p>
+            </div>
           </div>
-          <p class="card-text" style="color: #555;"><?php echo $cs['comment']; ?></p>
         </div>
       <?php } ?>
-    </table>
+    </div>
   </div>
+
+
 </div>
 
 <!--This code for footer included in this section -->

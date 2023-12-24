@@ -579,6 +579,12 @@
     </div>
   <?php } elseif (isset($_GET['managecomment'])) { ?>
     <pre><h2>Manage Comments</h2></pre>
+    <div class=" card text-primary p-2 mb-0">
+
+      To take the full comments data into the cav and excel file you have to first click on the search btn this will list all the comments without the pagination
+      Now here you can take the excel and csv this will load the full content Thank you!.
+
+    </div>
     <?php
         include("conn.php");
         // Define the number of records to display per page

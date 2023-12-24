@@ -50,7 +50,6 @@ if(isset($_POST['post'])){
                 mysqli_query($con, "INSERT INTO images (image, post_id) VALUES ('$image_name', $post_id)");
             }
         }
-
         header("location:index.php");
     } else {
         // Handle case where no featured image is uploaded

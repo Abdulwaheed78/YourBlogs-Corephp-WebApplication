@@ -3,7 +3,7 @@
 <div class="container mt-5">
 
     <!-- this is the row for showing the comments and related posts-->
-    <div class="container col-md-8" style="margin-top:100px;">
+    <div class="justify-content-center col-md-12 col-lg-8" style="margin-top:100px;">
         <?php
         if (isset($_GET['search'])) {
             $keyword = $_GET['search'];
@@ -28,10 +28,11 @@
                                     <p class="card-text"><?php echo nl2br(mb_strimwidth($row['content'], 0, 150, "...")); ?></p>
                                 </div>
                             </div>
-                            <div class="col-md-5 order-md-1 mt-3">
-                                <!-- Display the image with specified height and width -->
-                                <img src="./images/<?php echo $row['image']; ?>" class="img-fluid w-100" height="120px" alt="not found">
+                            <div class="col-md-5 order-md-1">
+                                <!-- Display the image covering the full div -->
+                                <img src="./images/<?php echo $row['image']; ?>" class="img-fluid w-100" style="object-fit: cover;" alt="not found">
                             </div>
+
                         </div>
                     </a>
                 </div>

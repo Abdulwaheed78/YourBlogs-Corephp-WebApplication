@@ -175,6 +175,7 @@
                                 $email = $_POST['email'];
                                 $comment = $_POST['comment'];
                                 $sql = mysqli_query($con, "INSERT INTO comments (email,name,comment,post_id) VALUES('$email' ,'$name', '$comment',$post_id)");
+                                unset($_POST);
                             } ?>
                             <p class="card-text"><?php echo $row['content']; ?></p>
                             <div class="addthis_inline_share_toolbox"></div>
@@ -232,12 +233,12 @@
                                         <div class="abdul col-md-7 mt-md-0 mt-3"> <!-- Add mt-md-0 for medium devices and mt-3 for small devices -->
                                             <div>
                                                 <div>
-                                                    <h6 class="card-title"><?php echo $rpost['title'] ?></h6>
+                                                    <h6 class="card-title text-primary"><?php echo $rpost['title'] ?></h6>
                                                 </div>
                                                 <div class="me-3">
                                                     <p class="card-text"><small class="text-muted"><?= date('F j Y', strtotime($rpost['created_at'])) ?></small></p>
                                                 </div>
-                                                <div style="max-height: 3.6em; overflow: hidden;">
+                                                <div style="max-height: 8.5rem; overflow: hidden;">
                                                     <p>
                                                         <?php
                                                         $contentLines = explode("\n", $rpost['content']);
@@ -261,27 +262,43 @@
             </div>
         </div>
 
-
-        <div class="">
-            <h5>user Comments</h5>
-            <hr>
-            <table class="table table-borderless" style="border: none;">
+        <div class="card mt-5">
+            <h5 class="card-header bg-dark text-white text-center mb-0">User Comments</h5>
+            <div class="card-body mt-0" style="max-height: 300px; overflow-y: auto;">
                 <?php
                 $id = $_GET['id'];
                 $query = mysqli_query($con, "SELECT * FROM comments WHERE post_id=$id ORDER BY id DESC");
                 while ($cs = mysqli_fetch_assoc($query)) {
                 ?>
-                    <div class="body border-bottom">
-                        <div class="d-flex justify-content-between">
-                            <h5 class="card-title"><?php echo $cs['name']; ?></h5>
-                            <small style="color: #aaa;"><?php echo date('F j, Y', strtotime($cs['created_at'])); ?></small>
+                    <div class="body border-bottom mb-3 p-3 shadow">
+                        <div class="d-flex align-items-start gap-3">
+                            <!-- Circular user image -->
+                            <div class="rounded-circle user-image" style="width: 50px; height: 50px; overflow: hidden; background-color: #ddd;">
+                                <!-- You can use an actual user image if you have one -->
+                                <img src="https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg" alt="User Image" class="w-100 h-100">
+                            </div>
+
+                            <div class="ml-3">
+                                <div class="justify-content-between align-items-center">
+                                    <div>
+                                        <h5 class="card-title mb-0"><?php echo $cs['name']; ?> </h5>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <small class="text-danger"><?php echo date('M j, Y', strtotime($cs['created_at'])); ?></small>
+                                    </div>
+                                </div>
+                                <p class="card-text" style="color: #555;"><?php echo $cs['comment']; ?></p>
+                            </div>
                         </div>
-                        <p class="card-text" style="color: #555;"><?php echo $cs['comment']; ?></p>
                     </div>
                 <?php } ?>
-            </table>
-
+            </div>
         </div>
+
+
+
+
+
     </div>
 </div>
 

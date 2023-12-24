@@ -46,13 +46,14 @@ $totalRecords = $totalRecordsData['total'];
           <button class="btn btn-outline-danger" onclick="exportDBToExcel()">
             <i class="bi bi-file-earmark-excel"></i> Excel
           </button>
-          <?php echo "Total records: " . $totalRecords; ?>
+          <?php echo "Total records: " . $totalRecords; ?>  | <a href="index.php?managecomment">Reset search</a>
         </div>
         <form action="searchrecordcomm.php" method="GET" class="d-flex">
           <label for="search" class="visually-hidden">Search</label>
           <input class="form-control me-2" placeholder="Search" aria-label="Search" name="searchpost" id="search" style="width: 70%;">
           <button class="btn btn-outline-success">Search</button>
         </form>
+
       </div>
 
       <?php if ($totalRecords > 0) : ?>
