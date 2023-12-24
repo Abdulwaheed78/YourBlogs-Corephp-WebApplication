@@ -711,7 +711,7 @@
                   <input type="file" required id="featured_image" name="featured_image">
                 </div>
                 <h6> Content</h6>
-                <textarea name="content" id="summernote"></textarea>
+                <textarea name="content" id="ckditor" cols="113" rows="10"></textarea>
                 <div class="col mt-3">
                   <h6>Select Category</h6>
                   <select style="width:800px;" class="form-select mb-3" required id="inputGroupSelect01" name="category_id">
@@ -899,4 +899,14 @@
       selectedFiles.appendChild(thumbnail);
     }
   }
+</script>
+
+<script type="text/javascript">
+  // Initialize CKEditor
+  CKEDITOR.replace('content', {
+
+    width: "800px",
+    height: "200px"
+
+  });
 </script>

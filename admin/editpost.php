@@ -78,7 +78,7 @@
                                     </div>
                                     
                                     <h6> Content</h6>
-                                    <textarea name="content" id="summernote" ><?php echo isset($id) ? $postDetails['content'] : ''; ?></textarea>
+                                    <textarea name="content" id="ckditor" cols="113" rows="10"><?php echo isset($id) ? $postDetails['content'] : ''; ?></textarea>
                                     
 
                                     <div class="col mt-3">
@@ -185,4 +185,13 @@
             selectedFiles.appendChild(thumbnail);
         }
     }
+</script>
+<script type="text/javascript">
+    // Initialize CKEditor
+    CKEDITOR.replace('content', {
+
+        width: "800px",
+        height: "200px"
+
+    });
 </script>
