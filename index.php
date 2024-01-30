@@ -98,7 +98,7 @@
       $post_images = (getimagesbyid($con, $data['id']));
       ?>
 
-      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-slide="6000">
         <div class="carousel-inner">
           <?php
           $c = 1;
